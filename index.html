@@ -1,13 +1,618 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gallery</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lady Boss — By Tanmatra Makeup Artist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- =====================================================
+       LADY BOSS — BEAUTY SALON WEBSITE
+       Structure:
+         1. CSS Variables & Reset
+         2. Global Styles
+         3. Loader
+         4. Navigation
+         5. Hero Section
+         6. Marquee Strip
+         7. About Section
+         8. Services Section
+         9. Gallery Section
+        10. Testimonials Section
+        11. Contact Section
+        12. Footer
+        13. Scroll-to-top button
+        14. JavaScript (animations, slider, interactions)
+       ===================================================== -->
+  <link rel='stylesheet' href='lady_boss_beauty.css' />
+</head>
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot"  id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-emblem">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="44" stroke="#D4A017" stroke-width="1" stroke-dasharray="4 6"/>
+        <circle cx="50" cy="50" r="30" stroke="#C0152A" stroke-width="0.5"/>
+        <path d="M50 20 L54 38 L72 32 L62 47 L80 50 L62 53 L72 68 L54 62 L50 80 L46 62 L28 68 L38 53 L20 50 L38 47 L28 32 L46 38 Z" fill="#D4A017" opacity="0.8"/>
+        <circle cx="50" cy="50" r="8" fill="#C0152A"/>
+      </svg>
+    </div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+    <div class="loader-text">Crafting Your Royal Experience</div>
+  </div>
+
+  <!-- =====================================================
+       NAVIGATION
+       ===================================================== -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">
+      <span class="nav-logo-main">LADY BOSS</span>
+      <span class="nav-logo-sub">By Tanmatra Makeup Artist</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about"         onclick="closeMobile()">About</a>
+    <a href="#services"      onclick="closeMobile()">Services</a>
+    <a href="#gallery"       onclick="closeMobile()">Gallery</a>
+    <a href="#testimonials"  onclick="closeMobile()">Reviews</a>
+    <a href="#contact"       onclick="closeMobile()">Contact</a>
+    <a href="#contact"       onclick="closeMobile()">✦ Book Now ✦</a>
+  </div>
+
+  <!-- =====================================================
+       HERO SECTION
+       ===================================================== -->
+  <section id="hero">
+    <div class="hero-slides">
+      <!-- Unsplash bridal / jewellery images (free to use) -->
+      <div class="hero-slide active">
+        <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=1600&q=85&fit=crop&crop=top" alt="Indian Bridal Makeup" />
+      </div>
+      <div class="hero-slide">
+        <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=1600&q=85&fit=crop" alt="Bridal Gold Jewellery" />
+      </div>
+      <div class="hero-slide">
+        <img src="https://images.unsplash.com/photo-1622495966027-e0173192c728?w=1600&q=85&fit=crop&crop=top" alt="Bridal Beauty" />
+      </div>
+      <div class="hero-slide">
+        <img src="https://images.unsplash.com/photo-1574786527860-f2e274867c91?w=1600&q=85&fit=crop&crop=top" alt="Wedding Jewellery" />
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-deco-lines"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Since 2018 &nbsp;·&nbsp; Meerut, UP</p>
+      <h1 class="hero-title">
+        LADY <em>Boss</em><br>BEAUTY
+      </h1>
+      <p class="hero-subtitle">
+        Where Every Bride Becomes a Queen —<br>
+        Royal Makeup &amp; Bridal Artistry by Tanmatra
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary"><span>Book Your Appointment</span></a>
+        <a href="#gallery" class="btn-outline">View Portfolio</a>
+      </div>
+    </div>
+
+    <div class="hero-dots" id="heroDots">
+      <div class="hero-dot active" data-index="0"></div>
+      <div class="hero-dot"        data-index="1"></div>
+      <div class="hero-dot"        data-index="2"></div>
+      <div class="hero-dot"        data-index="3"></div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       MARQUEE STRIP
+       ===================================================== -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <!-- Duplicated for seamless loop -->
+      <span class="marquee-item">Bridal Makeup</span>
+      <span class="marquee-item">Party Glam</span>
+      <span class="marquee-item">Pre-Bridal Packages</span>
+      <span class="marquee-item">HD Makeup</span>
+      <span class="marquee-item">Hair Styling</span>
+      <span class="marquee-item">Skin Care</span>
+      <span class="marquee-item">Nail Art</span>
+      <span class="marquee-item">Mehndi</span>
+      <span class="marquee-item">Bridal Makeup</span>
+      <span class="marquee-item">Party Glam</span>
+      <span class="marquee-item">Pre-Bridal Packages</span>
+      <span class="marquee-item">HD Makeup</span>
+      <span class="marquee-item">Hair Styling</span>
+      <span class="marquee-item">Skin Care</span>
+      <span class="marquee-item">Nail Art</span>
+      <span class="marquee-item">Mehndi</span>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       ABOUT SECTION
+       ===================================================== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-images reveal-left">
+          <img class="about-img-main"
+               src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&q=85&fit=crop&crop=top"
+               alt="Tanmatra at work" />
+          <img class="about-img-accent"
+               src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=700&q=85&fit=crop"
+               alt="Bridal Jewellery" />
+          <div class="about-badge">
+            <strong>7<sup>+</sup></strong>
+            <span>Years of<br>Artistry</span>
+          </div>
+        </div>
+
+        <div class="about-text-col reveal-right">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">
+            Artistry That<br><em>Transforms</em> &amp; Inspires
+          </h2>
+          <div class="section-divider"></div>
+          <p class="about-text">
+            At <strong>Lady Boss</strong>, we believe every woman deserves to feel like royalty.
+            Founded by <strong>Tanmatra</strong>, our studio blends traditional bridal elegance
+            with contemporary artistry — creating looks that are timeless, radiant, and uniquely yours.
+          </p>
+          <p class="about-text">
+            From <strong>intimate ceremonies</strong> to grand royal weddings, our team of
+            passionate artists brings years of expertise, premium products, and an eye for
+            detail that sets us apart in the region.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">500<sup>+</sup></span>
+              <span class="stat-label">Happy Brides</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">4.9<sup>★</sup></span>
+              <span class="stat-label">Google Rating</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">15<sup>+</sup></span>
+              <span class="stat-label">Services</span>
+            </div>
+          </div>
+          <br/>
+          <a href="#services" class="btn-primary" style="display:inline-block;margin-top:8px"><span>Explore Services</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SERVICES SECTION
+       ===================================================== -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <p class="section-label" style="justify-content:center">What We Offer</p>
+        <h2 class="section-title">Our Royal <em>Services</em></h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal" style="transition-delay:0.1s">
+          <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80&fit=crop&crop=top"
+               alt="Bridal Makeup" />
+          <div class="service-card-overlay">
+            <div class="service-card-tag">Signature</div>
+            <div class="service-card-num">01</div>
+            <h3 class="service-card-title">Bridal Makeup</h3>
+            <p class="service-card-desc">Full-day bridal transformation with HD and airbrush techniques. Lasts through every ceremony, every dance, every moment.</p>
+          </div>
+          <div class="service-price">From ₹8,000</div>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay:0.2s">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&fit=crop"
+               alt="Pre-Bridal Package" />
+          <div class="service-card-overlay">
+            <div class="service-card-tag">Most Popular</div>
+            <div class="service-card-num">02</div>
+            <h3 class="service-card-title">Pre-Bridal Package</h3>
+            <p class="service-card-desc">Skin prep, facials, waxing, and glow treatments spread over multiple sessions for a naturally luminous wedding-day glow.</p>
+          </div>
+          <div class="service-price">From ₹5,500</div>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay:0.3s">
+          <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80&fit=crop&crop=top"
+               alt="Hair Styling" />
+          <div class="service-card-overlay">
+            <div class="service-card-num">03</div>
+            <h3 class="service-card-title">Hair Styling</h3>
+            <p class="service-card-desc">Intricate bridal braids, royal updos, open curls, and blowouts — customized to match your lehenga and personality.</p>
+          </div>
+          <div class="service-price">From ₹2,500</div>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay:0.1s">
+          <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80&fit=crop"
+               alt="Party Makeup" />
+          <div class="service-card-overlay">
+            <div class="service-card-num">04</div>
+            <h3 class="service-card-title">Party Glamour</h3>
+            <p class="service-card-desc">Bold, dramatic looks for sangeet, mehendi, receptions, and every celebration that deserves sparkle and style.</p>
+          </div>
+          <div class="service-price">From ₹3,000</div>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay:0.2s">
+          <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&q=80&fit=crop&crop=top"
+               alt="Skin Care" />
+          <div class="service-card-overlay">
+            <div class="service-card-num">05</div>
+            <h3 class="service-card-title">Skin &amp; Facials</h3>
+            <p class="service-card-desc">Advanced facials, clean-up, detan, and gold treatments to revive your skin's natural radiance before the big day.</p>
+          </div>
+          <div class="service-price">From ₹1,200</div>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay:0.3s">
+          <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80&fit=crop&crop=bottom"
+               alt="Nail Art" />
+          <div class="service-card-overlay">
+            <div class="service-card-tag">New</div>
+            <div class="service-card-num">06</div>
+            <h3 class="service-card-title">Nail Art &amp; Spa</h3>
+            <p class="service-card-desc">Intricate nail art, gel extensions, and luxury manicure-pedicure packages to complete your royal bridal look.</p>
+          </div>
+          <div class="service-price">From ₹800</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       GALLERY SECTION
+       ===================================================== -->
+  <section id="gallery">
+    <div class="container">
+      <div class="gallery-header reveal">
+        <p class="section-label" style="justify-content:center">Portfolio</p>
+        <h2 class="section-title">Royal <em>Transformations</em></h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item reveal">
+          <img src="https://images.unsplash.com/photo-1736849559257-a3d038f8ecb8?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bridal Look 1" />
+          <div class="gallery-hover-info"><div class="gallery-hover-title">Royal Bridal</div></div>
+          <div class="gallery-hover-icon">+</div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.1s">
+          <img src="https://images.unsplash.com/photo-1662712975430-f0387f71f0a2?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Jewellery" />
+          <div class="gallery-hover-info"><div class="gallery-hover-title">Bridal Jewels</div></div>
+          <div class="gallery-hover-icon">+</div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.15s">
+          <img src="https://i.pinimg.com/originals/25/03/ab/2503ab517f02802ec387d9db400560b1.png" alt="Gold Jewellery" />
+          <div class="gallery-hover-info"><div class="gallery-hover-title">Gold Adornments</div></div>
+          <div class="gallery-hover-icon">+</div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.2s">
+          <img src="https://images.unsplash.com/photo-1677691257000-35a6f3394585?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aW5kaWFuJTIwZHVsaGFufGVufDB8fDB8fHww" alt="Makeup artist" />
+          <div class="gallery-hover-info"><div class="gallery-hover-title">Studio Session</div></div>
+          <div class="gallery-hover-icon">+</div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.1s">
+          <img src="https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bridal Look" />
+          <div class="gallery-hover-info"><div class="gallery-hover-title">Bridal Glow</div></div>
+          <div class="gallery-hover-icon">+</div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.15s">
+          <img src="https://bridewhimsy.com/wp-content/uploads/2024/07/bb73aab25e4be64d0826b08d5a590555_compress.jpg" alt="Nail Art" />
+          <div class="gallery-hover-info"><div class="gallery-hover-title">Nail Artistry</div></div>
+          <div class="gallery-hover-icon">+</div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.2s">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&fit=crop" alt="Pre-Bridal" />
+          <div class="gallery-hover-info"><div class="gallery-hover-title">Pre-Bridal</div></div>
+          <div class="gallery-hover-icon">+</div>
+        </div>
+        <div class="gallery-item reveal" style="transition-delay:0.25s">
+          <img src="https://mehkan.com/wp-content/uploads/2023/07/Rose-Infused-Waterfall-Braid.jpg" alt="Hair Styling" />
+          <div class="gallery-hover-info"><div class="gallery-hover-title">Hair Styling</div></div>
+          <div class="gallery-hover-icon">+</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================
+       TESTIMONIALS
+       ===================================================== -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <p class="section-label" style="justify-content:center">Bride Stories</p>
+        <h2 class="section-title">Words of <em>Love</em></h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="testimonials-slider reveal">
+        <div class="testimonials-track" id="testimonialsTrack">
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "My bridal makeup was beyond my dreams. Tanmatra mam understood exactly what I wanted —
+              natural yet stunning. Everyone at my wedding kept complimenting my look.
+              I felt like a true queen. Highly recommended for any bride!"
+            </p>
+            <div class="testimonial-author">Priya Sharma</div>
+            <div class="testimonial-role">Bride — December 2024</div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "The pre-bridal package was absolutely worth every rupee. My skin glowed
+              on my wedding day and the makeup stayed perfect through 6 hours of ceremony.
+              The staff is so warm and professional. Lady Boss is the only choice for brides!"
+            </p>
+            <div class="testimonial-author">Ankita Gupta</div>
+            <div class="testimonial-role">Bride — November 2024</div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "Booked Lady Boss for my sister's wedding and we couldn't be happier.
+              The entire team was punctual, creative, and incredibly skilled.
+              The bridal look was flawless — natural and gorgeous. Will forever
+              recommend Tanmatra mam to every bride!"
+            </p>
+            <div class="testimonial-author">Meera Verma</div>
+            <div class="testimonial-role">Sister of the Bride — October 2024</div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "Excellent service with premium products. The atmosphere is so relaxing
+              and the results are fantastic. Got my engagement makeup done and
+              received so many compliments. Definitely my go-to parlour
+              for all special occasions!"
+            </p>
+            <div class="testimonial-author">Ritu Singh</div>
+            <div class="testimonial-role">Engagement Makeup — September 2024</div>
+          </div>
+
+        </div>
+
+        <div class="testimonials-nav">
+          <button class="t-btn" id="tPrev">&#8592;</button>
+          <div class="t-dots" id="tDots">
+            <div class="t-dot active"></div>
+            <div class="t-dot"></div>
+            <div class="t-dot"></div>
+            <div class="t-dot"></div>
+          </div>
+          <button class="t-btn" id="tNext">&#8594;</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================
+       CONTACT SECTION
+       ===================================================== -->
+  <section id="contact">
+    <div class="container">
+
+      <div style="text-align:center; margin-bottom:70px" class="reveal">
+        <p class="section-label" style="justify-content:center">Get In Touch</p>
+        <h2 class="section-title">Book Your <em>Royal</em> Day</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="contact-grid">
+
+        <div class="contact-info-block reveal-left">
+          <div>
+            <p class="section-label">Visit Us</p>
+            <h3 style="font-family:var(--font-display);font-size:32px;color:var(--gold-light);margin-bottom:12px">
+              Come, <em style="font-weight:300">Let's Create</em><br>Your Story
+            </h3>
+            <p style="font-style:italic;color:var(--text-muted);font-size:15px;line-height:1.7">
+              Step into our royal studio and let us transform you into the most beautiful version of yourself.
+            </p>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-item-text">
+              <strong>Our Studio</strong>
+              <p>Dev Shree Plaza, New Kalindi Rd,<br>Transport Nagar, Jwala Nagar,<br>Meerut, UP 250002</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-item-text">
+              <strong>Phone & WhatsApp</strong>
+              <p>+91 121 315 2840</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-item-text">
+              <strong>Studio Hours</strong>
+              <p>Monday – Sunday<br>10:00 AM – 8:00 PM</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-item-text">
+              <strong>Email Us</strong>
+              <p>tanmatra@ladyboss.in</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form reveal-right">
+          <div class="form-title">Book An Appointment</div>
+          <div class="form-subtitle">Fill in the details and we'll confirm within 24 hours</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" placeholder="e.g. Priya Sharma" />
+            </div>
+            <div class="form-group">
+              <label>Mobile Number *</label>
+              <input type="tel" placeholder="+91 XXXXX XXXXX" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Service Required</label>
+              <select>
+                <option value="">Select a Service</option>
+                <option>Bridal Makeup</option>
+                <option>Pre-Bridal Package</option>
+                <option>Party Glamour</option>
+                <option>Hair Styling</option>
+                <option>Skin &amp; Facials</option>
+                <option>Nail Art &amp; Spa</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Preferred Date</label>
+              <input type="date" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Message / Special Requests</label>
+            <textarea rows="4" placeholder="Tell us about your special occasion, look preferences, or any questions..."></textarea>
+          </div>
+
+          <button class="form-submit" onclick="handleSubmit(event)">
+            <span>✦ Send Booking Request ✦</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+
+        <div>
+          <div class="footer-brand-name">LADY BOSS</div>
+          <div class="footer-brand-tagline">By Tanmatra Makeup Artist</div>
+          <p class="footer-brand-desc">
+            Transforming brides and beautiful souls since 2018.
+            Every look we create is a work of art, a story told in colour, light, and elegance.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" title="Instagram">📸</a>
+            <a href="#" class="social-btn" title="Facebook">👍</a>
+            <a href="#" class="social-btn" title="WhatsApp">💬</a>
+            <a href="#" class="social-btn" title="YouTube">▶</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-heading">Quick Links</div>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Book Now</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-heading">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Bridal Makeup</a></li>
+            <li><a href="#services">Pre-Bridal</a></li>
+            <li><a href="#services">Party Glamour</a></li>
+            <li><a href="#services">Hair Styling</a></li>
+            <li><a href="#services">Skin &amp; Facials</a></li>
+            <li><a href="#services">Nail Art &amp; Spa</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-heading">Studio Hours</div>
+          <ul class="footer-hours">
+            <li><span>Monday</span>     <span>10AM – 8PM</span></li>
+            <li><span>Tuesday</span>    <span>10AM – 8PM</span></li>
+            <li><span>Wednesday</span>  <span>10AM – 8PM</span></li>
+            <li><span>Thursday</span>   <span>10AM – 8PM</span></li>
+            <li><span>Friday</span>     <span>10AM – 8PM</span></li>
+            <li><span>Saturday</span>   <span>10AM – 8PM</span></li>
+            <li><span>Sunday</span>     <span>10AM – 8PM</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © 2025 Lady Boss — By Tanmatra. Designed with <span>♥</span> for Royalty.
+        </p>
+        <p class="footer-copy">Meerut, Uttar Pradesh, India</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL TO TOP -->
+  <button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+  <script src='lady_boss_beauty.js'></script>
+</body>
 </html>
+
+
